@@ -2,7 +2,7 @@
 #Code for 2018 Sustainability Survey App
 
 #Load and format data
-{setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+{setwd("."))
   dat <- read.csv("2018_survey_data_en.csv", check.names = FALSE)
     dat[dat=="1"] <- "Yes"
       dat[dat=="0"] <- "No" 
