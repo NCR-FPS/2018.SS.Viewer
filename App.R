@@ -2,20 +2,20 @@
 #Code for 2018 Sustainability Survey App
 
 #Load and format data
-{setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+{setwd(".")
   dat <- read.csv("2018_survey_data_en.csv", check.names = FALSE)
     dat[dat=="1"] <- "Yes"
-      dat[dat=="0"] <- "No" 
+      dat[dat=="0"] <- "No"
       dat$`Provide the link to the Scientific Report (if available)` <- paste0("<a href='",
-        dat$`Provide the link to the Scientific Report (if available)`,"'target='_blank'>", 
+        dat$`Provide the link to the Scientific Report (if available)`,"'target='_blank'>",
           dat$`Provide the link to the Scientific Report (if available)`,"</a>")
       dat$`Please provide the link for the online IFMP, or if an IFMP has not been developed, indicate when the IFMP will be posted online.` <- paste0("<a href='",                                                      dat$`Please provide the link for the online IFMP, or if an IFMP has not been developed, indicate when the IFMP will be posted online.`,"'target='_blank'>",                                                          dat$`Please provide the link for the online IFMP, or if an IFMP has not been developed, indicate when the IFMP will be posted online.`,"</a>")
-        dat2 <- data.frame(t(dat[,-1])) 
+        dat2 <- data.frame(t(dat[,-1]))
           colnames(dat2) <- dat[,1]
             x <- c("dplyr", "kableExtra", "knitr", "shiny", "data.table", "formattable",
                    "shinythemes", "ggplot2", "plotly", "reshape2", "shinyjs", "tidyr",
-                   "ggthemes", "DT", "gridExtra", "shinycssloaders") 
-              packages <- x[!(x %in% installed.packages()[,"Package"])] 
+                   "ggthemes", "DT", "gridExtra", "shinycssloaders")
+              packages <- x[!(x %in% installed.packages()[,"Package"])]
                 if(length(packages)) install.packages(packages,
                     dependencies = TRUE)
                     lapply(x, require, character.only = TRUE)
@@ -24,23 +24,23 @@
                         PA <- dat2[c(1,2,15:19,66,70,77,79,82,84,86,88,90:93),]
                         batch1 <- dat[c(26,30,31,37,50,51,56,58,59,66,68,82,81,
                                         98,102,103,112,122,136,150,151,155,159,164),]
-                        batch_flipped <- data.frame(t(batch1[,-1])) 
+                        batch_flipped <- data.frame(t(batch1[,-1]))
                         colnames(batch_flipped) <- batch1[,1]
                         batch_PA <- batch_flipped[c(1,2,15:19,66,70,77,79,82,84,
                                                     86,88,90:93),]
 
     subheads <- c("General Information", "Scientific Reports", "Management Plans",
                   "Abundance and Mortality Information", "Limit Reference Point", "Upper Stock Reference",
-                  "Stock Status", "Removal Reference", "Fishery Status", "Harvest Decision Rules", 
+                  "Stock Status", "Removal Reference", "Fishery Status", "Harvest Decision Rules",
                   "Management Measures", "Bycatch Information", "SARA and COSEWIC Considerations")
     dat_subhead <- dat
     dat_subhead[,subheads] <- ""
     dat_organized <- dat_subhead[, c(1, 138, 2:6, 16, 137, 139, 7:15, 140, 97:100, 104:112, 141, 74:77, 142, 17:20, 68:71, 143, 65:67, 144, 78:83, 145, 84:91, 146, 94:96, 147, 72, 73, 92, 93, 148, 21:64, 101, 102, 149, 103, 113:122, 150, 123:136)]
-    dat_organized2 <- data.frame(t(dat_organized[,-1])) 
+    dat_organized2 <- data.frame(t(dat_organized[,-1]))
     colnames(dat_organized2) <- dat_organized[,1]
     dat_PA <- dat_organized2[c(1:8, 38:75),]
     dat_batch <- dat_organized[c(26,30,31,37,50,51,56,58,59,66,68,82,81,98,102,103,112,122,136,150,151,155,159,164),]
-    dat_batch2 <- data.frame(t(dat_batch[,-1])) 
+    dat_batch2 <- data.frame(t(dat_batch[,-1]))
     colnames(dat_batch2) <- dat_batch[,1]
     dat_batch_PA <- dat_batch2[c(1:8, 38:75),]}
 ##############################################################################
