@@ -411,7 +411,7 @@ server <- function(input, output) {
       output$reportfilter <- renderUI({
         selectizeInput(inputId = "dropdown2",
           label = "Select a Region here:",
-            choices = dat[,4], 
+            choices = dat[,3], 
               options = list(placeholder = "Select a Region", 
                 onInitialize = I('function() { this.setValue(""); }')))})
       
@@ -465,7 +465,7 @@ server <- function(input, output) {
       output$reportfilter <- renderUI({
         selectizeInput(inputId = "dropdown3", 
           label = "Select a Species Group here:",
-            choices = dat[,3], 
+            choices = dat[,2], 
               options = list(placeholder = "Select a Species Group", 
                 onInitialize = I('function() { this.setValue(""); }')))})
       
@@ -541,7 +541,7 @@ server <- function(input, output) {
       output$outputfilter <- renderUI({
         selectizeInput(inputId = "regdrop", 
           label = "Select a Region here:",
-            choices = dat[,4], 
+            choices = dat[,3], 
               options = list(placeholder = "Select a Region", 
                 onInitialize = I('function() { this.setValue(""); }')))})}
 
@@ -549,7 +549,7 @@ server <- function(input, output) {
       output$outputfilter <- renderUI({
         selectizeInput(inputId = "sppdrop", 
           label = "Select a Species Group here:",
-            choices = dat[,3], 
+            choices = dat[,2], 
               options = list(placeholder = "Select a Species Group", 
                 onInitialize = I('function() { this.setValue(""); }')))})}})
     
